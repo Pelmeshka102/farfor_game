@@ -2,13 +2,11 @@
 // wraps XMLHttpRequest and adds retry support and progress updates when the
 // content is gzipped (gzipped content doesn't report a computable content length
 // on Google Chrome)
-
 var FileLoader = {
     options: {
         retryCount: 4,
         retryInterval: 1000,
     },
-    
     // do xhr request with retries
     request: function(url, method, responseType, currentAttempt) {
         if (typeof method === 'undefined') throw "No method specified";

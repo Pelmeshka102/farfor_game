@@ -47,13 +47,7 @@
 		position: relative;
 	}
 
-	canvas:focus, canvas:active {
-		outline: none;
-		border: 0;
-		ie-dummy: expression(this.hideFocus=true);
-		-moz-outline-style: none;
-	}
-
+	
 	div {
 		-webkit-tap-highlight-color: rgba(0,0,0,0);
 		-webkit-touch-callout: none;
@@ -156,7 +150,7 @@
 	</div>
 	<!-- -->
 	<script id='engine-loader' type='text/javascript' src="dmloader.js"></script>
-	
+	<script type='text/javascript' src="vk_bridge.js"></script>
 	<!-- -->
 	<script id='engine-setup' type='text/javascript'>
 	var extra_params = {
