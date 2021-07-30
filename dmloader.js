@@ -2,11 +2,14 @@
 // wraps XMLHttpRequest and adds retry support and progress updates when the
 // content is gzipped (gzipped content doesn't report a computable content length
 // on Google Chrome)
+import bridge from '@vkontakte/vk-bridge';
+
 var FileLoader = {
     options: {
         retryCount: 4,
         retryInterval: 1000,
     },
+    
     // do xhr request with retries
     request: function(url, method, responseType, currentAttempt) {
         if (typeof method === 'undefined') throw "No method specified";
@@ -165,6 +168,18 @@ var EngineLoader = {
 /* Load and combine game archive data that is split into archives        */
 /* ********************************************************************* */
 
+
+bridge.send("VKWebAppInit", {});
+// Отправка события 
+bridge.send("VKWebAppGetUserInfo",{}); 
+// Подписка на событие-результат 
+bridge.subscribe((e) => { 
+if(e.type == 'VKWebAppGetUserInfoResult') { 
+console.log(e.data.status); 
+console.log(e.data); 
+}
+}
+);
 var GameArchiveLoader = {
     // which files to load
     _files: [],
